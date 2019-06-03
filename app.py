@@ -15,6 +15,8 @@ from flask import (
     Flask,
     session,
     render_template,
+    redirect,
+    url_for,
     jsonify)
 
 from amz_etsy import scrape
@@ -129,7 +131,6 @@ def interest_by_region_data():
     region_df['total'] = region_df.sum(axis=1)
     region_filtered_df = region_df[region_df['total']>0]
     region_loc_df = pd.merge(region_filtered_df, countries_df, how="inner", left_on="geoName", right_on="name")
-    region_loc_df = region_loc_df.drop(columns=['name','total'])
     region_loc_df.reset_index(inplace=True)
     region_loc_data = []
     for index, row in region_loc_df.iterrows():
@@ -137,6 +138,7 @@ def interest_by_region_data():
             row.to_dict()
         )
     return jsonify(region_loc_data)
+
 # mass data
 @app.route("/mass_data/<inputValue>")
 def mass_scrape(inputValue):
@@ -184,6 +186,7 @@ def mass_scrape(inputValue):
         return jsonify(amazon_data, total_rev_data, monthly_rev_data, etsy_data)
     except:
         return redirect(url_for('catch'))
+
 @app.route("/error")
 def catch():
     # parse input terms

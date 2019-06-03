@@ -39,19 +39,6 @@ body {
   padding-bottom: 80px;
 }
 
-#newsroom {
-  z-index: -2;
-  stroke: #BF0A30;
-  opacity: 0.1;
-  border-radius: 8px;
-}
-
-.newspaper {
-  font: 50px Helvetica Neue;
-  fill: #002868;
-  opacity: 1;
-  text-anchor: middle;
-}
 
 .chart::before {
   z-index: -1;
@@ -96,18 +83,6 @@ body {
 .inactive:hover {
   fill: #BF0A30;
   cursor: pointer;
-}
-
-.state-circles {
-  fill: #002868;
-  stroke: #BF0A30;
-  opacity: 1;
-}
-
-.state-abbr {
-  fill: white;
-  font: 20px Myriad Pro;
-  text-anchor: middle;
 }
 
 #box {
@@ -184,7 +159,7 @@ body {
   margin: 50px 0px 230px 170px;
   bottom: 8px;
   left: 16px;
-  font-size: 70px;
-  font-family: Garamond;
+  font-size: 50px;
+  font-family: Helvetica Neue;
 }
 /* end of modal */
