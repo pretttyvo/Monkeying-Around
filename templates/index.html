@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pursuit Monkey</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/d3Style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+
+<body class="bg-light"  background="../static/images/pink.jpg">
+  <div class="pursuit-monkey container" >
+    <div class="row" id="dashboard-block">
+      <div class="col-12 jumbotron text-center" href="/">
+        <h1 id="title" >Pursuit Monkey</h1>
+        <p>Your Dashboard to Success</p>
+      </div>
+    </div>
+  <!-- insert modal -->
+
+  <script type="text/javascript">
+    $(window).on('load',function(){
+        $('#exampleModal').modal('show');
+    });
+</script>
+
+<!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="btn" data-dismiss="modal">
+          <img src="static/images/landing_yellow.jpg" alt="Monkeying Around" height="700" width="1200">
+          <div><h1 class="modal-title" id="exampleModalLabel">Welcome to <br> Pursuit Monkey</h1></div>
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- exit modal -->
+    <div  class="row">
+      <div class="col-12">
+        <div class="container ">
+          <form>
+            <div class="form-group">
+            
+            <!-- navbar -->
+            <!-- <nav class="navbar navbar-light bg-light justify-content-between"> -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                      <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a id="userHelp" class="nav-link dropdown-toggle navbar-brand" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                What interests you?
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" id="google-home" href="/">Home</a>
+                              <a class="dropdown-item btn" id="global">Global</a>
+                              <a class="dropdown-item" id="monthly_global">Monthly Global</a>
+                              <a class="dropdown-item" id="comparison">Local vs. Global</a>
+                              <a class="dropdown-item btn" href="/viewMap" target="_blank" id="map_btn">View on Map</a>
+                            </div>
+                          </li>
+                      </ul>
+                    </div>
+                <form class="form-inline">
+                  <input class="form-control" id="keywords" type="words" aria-describedby="userHelp" placeholder="Enter up to 5 search terms separated by commas" aria-label="Search">
+                  <button id="submit" type="submit" class="btn">Submit</button>
+                </form>
+              </nav>
+            </div>
+            <!-- end of navbar -->
+          </form>
+        </div>  
+      </div>
+    </div>
+    <div  class="row">
+      <div class="col-4" id="avg"></div>
+      <div class="col-8" id="time"></div>
+      <br>
+      <div class="col-12" id="revenue"></div>
+      <br>
+      <div class="col-12" id="monthly"></div>
+      <br>
+      <div class="col-12" id="monthly_rev"></div>
+      <br>
+      <div class="col-12" id="monthly_unit"></div>
+      <br>
+      <div class="col-6" id="loc"></div>
+      <div class="col-6" id="glob"></div>
+      <br>
+      <!-- <div class="col-12" id="loc_vs_glo"> -->
+      <br>
+      <div class="col-6" id="loc">
+          <div id="table-area1" class="compare d-none">
+              <table id="prod_loc_vs_glo" class="table table-light table-hover">
+                <thead>
+                  <tr>
+                    <th class="table-head">Product Name</th>
+                    <th class="table-head">Product Price</th>
+                    <th class="table-head">Product Type</th>
+                  </tr>
+                </thead>
+                <tbody id="local_tbody"></tbody>
+              </table>
+            </div>
+      </div>
+
+      <div class="col-6" id="glob">
+          <div id="table-area2" class="compare d-none">
+              <table id="prod_loc_vs_glo" class="table table-light table-hover">
+                <thead>
+                  <tr>
+                    <th class="table-head">Product Name</th>
+                    <th class="table-head">Product Price</th>
+                    <th class="table-head">Product Type</th>
+                  </tr>
+                </thead>
+                <tbody id="global_tbody"></tbody>
+              </table>
+            </div>
+            <!-- </div> -->
+      </div>
+      <br>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    <p>Pursuit Monkey (2019)</p>
+  </div>
+  <script type="text/javascript" src="static/js/app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</body>
+
+</html>
