@@ -13,7 +13,7 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 import time
 import locale
-from config import email, password
+# from config import email, password
 # Import SQL Alchemy
 from sqlalchemy import create_engine
 

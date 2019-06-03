@@ -110,18 +110,6 @@ body {
   text-anchor: middle;
 }
 
-p {
-  position: fixed;
-  top: 100px;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-family: 'Arial', sans-serif;
-  color: white;
-  text-align: center;
-  width: 100%;
-  z-index: 1;
-}
 #box {
   margin: 0 0;
   width: 100%;

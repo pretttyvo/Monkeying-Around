@@ -475,7 +475,7 @@ local.on("click", async function() {
         Plotly.purge("avg")
         Plotly.newPlot('loc', data1, layout1);
         Plotly.newPlot('glob', data2, layout2);
-    })();
+    });
     
 // let globalProd = mass_data[0]
 // let localProd = mass_data[3]
