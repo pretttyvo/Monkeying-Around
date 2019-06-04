@@ -1,1 +1,1 @@
-FLASK_APP=Pursuit_Monkey/app.py flask run
+FLASK_APP=Pursuit_monkey/app.py flask run
