@@ -24,28 +24,14 @@ submit.on("click", async function() {
 
     // Select the input element and get the raw HTML node
     const inputElement = d3.select("#keywords");
-    console.log(inputElement)
+    
     // Get the value property of the input element
     const inputValue = inputElement.property("value");
-    const mass_data_url = `/mass_data/${inputValue}`;
+
     // Retrieve data
     const time_data_url = `/live_trends/${inputValue}`;
-    // const mass_product_url = `/mass_product/${inputValue}`;
-    // const mass_revenue_url = `/mass_revenue/${inputValue}`;
-    // const local_product_url = `/local_product/${inputValue}`;
     
     const time_data = await d3.json(time_data_url);
-    console.log(time_data);
-    
-    const mass_data = await d3.json(mass_data_url);
-    console.log(mass_data);
-    
-    // const mass_product_data = await d3.json(mass_product_url);
-    // console.log(mass_product_data);
-    // const mass_revenue_data = await d3.json(mass_revenue_url);
-    // console.log(mass_revenue_data);
-    // const local_product_data = await d3.json(local_product_url);
-    // console.log(local_product_data);
 
     // Format date data
     const parseTime = d3.timeParse("%a, %d %b %Y 00:00:00 GMT");
@@ -58,7 +44,6 @@ submit.on("click", async function() {
     
     // Create usable arrays for looping
     var input_array = inputValue.split(",");
-    
     var chart_data = [];
 
 // ---------------------------------------------------------------------------- //
@@ -126,8 +111,6 @@ submit.on("click", async function() {
 
         Plotly.newPlot('avg', data, layout);
     })();
-    // Plotly.purge("time");
-    // Plotly.purge("avg");
     Plotly.purge("revenue");
     Plotly.purge("monthly");
     Plotly.purge("monthly_rev");
@@ -355,9 +338,6 @@ mon_glo.on("click", async function() {
     Plotly.purge("time");
     Plotly.purge("avg");
     Plotly.purge("revenue");
-    // Plotly.purge("monthly");
-    // Plotly.purge("monthly_rev");
-    // Plotly.purge("monthly_unit");
     Plotly.purge("loc");
     Plotly.purge("glob");
     if (document.getElementById("table-area1").classList.contains('d-none')) {}
@@ -370,7 +350,6 @@ mon_glo.on("click", async function() {
 
 });
 
-// document.getElementById("table-area1").classList.add('d-none')
 // ---------------------------------------------------------------------------- //
 // ---------------------------------Comparison Trends------------------------------- //
 // Create revenue graph
@@ -476,9 +455,6 @@ local.on("click", async function() {
         Plotly.newPlot('loc', data1, layout1);
         Plotly.newPlot('glob', data2, layout2);
     });
-    
-// let globalProd = mass_data[0]
-// let localProd = mass_data[3]
 
 // read data into the table
     var global_arrays = []
@@ -531,13 +507,6 @@ local.on("click", async function() {
     Plotly.purge("monthly");
     Plotly.purge("monthly_rev");
     Plotly.purge("monthly_unit");
-    // Plotly.purge("loc");
-    // Plotly.purge("glob");
-    // if (document.getElementById("table-area1").classList.contains('d-none')) {}
-    // else{
-    // document.getElementById("table-area1").classList.add('d-none'),
-    // document.getElementById("table-area2").classList.add('d-none');
-    // };
 });
 
 // -------------------------------------------------------------------------------- //
