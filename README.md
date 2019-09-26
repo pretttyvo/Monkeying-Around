@@ -1,4 +1,4 @@
-# PURSUIT
+# Pusuit Monkey
 ### Project Details
 Create a site that collects data from google, amazon, and Helium 10 on product/search trends. Make a unique page for a search term, condensing the information to be easy to read and infer from. The user will input a search term and the search term will be pushed into the sites to pull data on yearly trends, popularity by state, and where is it most popular. The user may then filter by the three sources if desired.
 
@@ -26,23 +26,5 @@ Provide data on profitability, competitors, etc., for user to determine if there
 #### 5.	MUST INCLUDE SOME LEVEL OF USER-DRIVEN INTERACTION (E.G. MENUS, DROPDOWNS, TEXTBOXES, ETC.)
 - search bar
 - filter/dropdown
-#### 6.	FINAL VIS MUST HAVE 3 VIEWS
-
-#### HOME LANDING PAGE
-
-![Images/landingResize.png](images/home.jpg)
-
-#### FULL INFO PAGE
-
-![Images/landingResize.png](images/data.jpg)
-![Images/landingResize.png](images/data2.jpg)
-
-#### NAVBAR PAGE
-![Images/landingResize.png](images/navbar.png)
-
-### SINGLE PAGES (DATA EXAMPLES)
-![Images/landingResize.png](images/google_trends.png)
-![Images/landingResize.png](images/helium_10.png)
-![Images/landingResize.png](images/amazon.png)
 
 
