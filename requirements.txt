@@ -19,7 +19,7 @@ pytz==2018.5
 requests==2.22.0
 six==1.11.0
 SQLAlchemy==1.2.10
-urllib3==1.25.3
+urllib3==1.25.8
 Werkzeug==0.14.1
 selenium==3.141.0
 gunicorn==19.7.1
